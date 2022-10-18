@@ -12,6 +12,7 @@ something you need is missing.
 > [plenary](https://github.com/nvim-lua/plenary.nvim),
 > [nui](https://github.com/MunifTanjim/nui.nvim)
 > and others are become to appear.
+> And I personaly tied to write this classes every time.
 
 Both `Window` and `Buffer` classes have meta-accessors to interact with options
 of the particular window or buffer, respectively.

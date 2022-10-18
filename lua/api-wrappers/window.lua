@@ -30,7 +30,7 @@ end
 
 ---@param force? boolean
 function Window:close(force)
-   vim.api.nvim_win_close(self.id, force or false)
+   api.nvim_win_close(self.id, force or false)
 end
 
 ---@return nvim.api.Buffer
@@ -68,6 +68,9 @@ function Window:set_option(name, value)
    return api.nvim_win_set_option(self.id, name, value)
 end
 
+---The width of offset of the window, occupied by line number column,
+---fold column and sign column.
+---@return integer
 function Window:get_text_offset()
   return fn.getwininfo(self.id)[1].textoff
 end

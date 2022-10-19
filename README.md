@@ -16,9 +16,9 @@ something you need is missing.
 
 ## Modules
 
-- `require('api-wrappers.window')` or `require('api-wrappers').Window`
-- `require('api-wrappers.buffer')` or `require('api-wrappers').Buffer`
-- `require('api-wrappers.highlight')` or `require('api-wrappers').hl`
+- `window` (`require('api-wrappers.window)`)
+- `buffer` (`require('api-wrappers.buffer)`)
+- `highlight` (`require('api-wrappers.highlight)`)
 
 ## 
 
@@ -28,8 +28,6 @@ of the particular window or buffer, respectively.
 Here is the example for `Buffer` class:
 
 ```lua
-local Buffer = require('api-wrappers').Buffer
--- or
 local Buffer = require('api-wrappers.buffer')
 
 local bufnr = vim.api.nvim_get_current_buf()

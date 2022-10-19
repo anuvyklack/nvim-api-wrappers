@@ -14,6 +14,14 @@ something you need is missing.
 > and others are become to appear.
 > And I personaly tied to write this classes every time.
 
+## Modules
+
+- `require('api-wrappers.window')` or `require('api-wrappers').Window`
+- `require('api-wrappers.buffer')` or `require('api-wrappers').Buffer`
+- `require('api-wrappers.highlight')` or `require('api-wrappers').hl`
+
+## 
+
 Both `Window` and `Buffer` classes have meta-accessors to interact with options
 of the particular window or buffer, respectively.
 

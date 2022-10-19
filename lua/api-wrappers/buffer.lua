@@ -1,6 +1,5 @@
 local class = require('middleclass')
 local api = vim.api
-local fn = vim.fn
 
 ---@class nvim.api.Buffer
 ---@field id integer

@@ -1,7 +1,7 @@
 local class = require('middleclass')
+local Buffer = require('api-wrappers.buffer')
 local api = vim.api
 local fn = vim.fn
-local Buffer = require('api-wrappers.buffer')
 
 ---@class nvim.api.Window
 ---@field id integer

@@ -5,7 +5,7 @@ local fn = vim.fn
 ---@class nvim.api.Buffer
 ---@field id integer
 ---@field bo table buffer options meta-accessor
-local Buffer = class()
+local Buffer = class('nvim.api.Buffer')
 
 function Buffer:initialize(bufnr)
    self.id = bufnr

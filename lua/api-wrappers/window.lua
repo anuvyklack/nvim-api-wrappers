@@ -6,7 +6,7 @@ local Buffer = require('api-wrappers.buffer')
 ---@class nvim.api.Window
 ---@field id integer
 ---@field wo table window options meta-accessor
-local Window = class()
+local Window = class('nvim.api.Window')
 
 ---@param winid? integer If absent or 0 - the current window ID will be used.
 function Window:initialize(winid)

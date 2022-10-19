@@ -7,8 +7,9 @@ local fn = vim.fn
 ---@field bo table buffer options meta-accessor
 local Buffer = class('nvim.api.Buffer')
 
+---@param bufnr? integer If not passed the current buffer number will be used.
 function Buffer:initialize(bufnr)
-   self.id = bufnr
+   self.id = bufnr or api.nvim_get_current_buf()
 
    self.bo = setmetatable({}, {
       __index = function(_, opt)

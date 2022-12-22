@@ -20,8 +20,8 @@ function Buffer:initialize(bufnr)
    })
 end
 
----@param l win.Buffer
----@param r win.Buffer
+---@param l nvim.api.Buffer
+---@param r nvim.api.Buffer
 function Buffer.__eq(l, r)
    return l.id == r.id
 end
@@ -30,9 +30,14 @@ function Buffer:get_name()
    return api.nvim_buf_get_name(self.id)
 end
 
----@param opts? table
+--- • force: Force deletion and ignore unsaved changes.
+--- • unload: Unloaded only, do not delete.
+---@param opts? { force?: boolean, unload?: boolean }
 function Buffer:delete(opts)
-   opts = opts or {}
+   opts = vim.tbl_extend('keep', opts or {}, {
+      force = false,
+      unload = false
+   })
    api.nvim_buf_delete(self.id, opts)
 end
 
@@ -55,6 +60,14 @@ end
 ---@return integer
 function Buffer:line_count()
    return api.nvim_buf_line_count(self.id)
+end
+
+---@param start integer First line index
+---@param end_ integer Last line index, exclusive
+---@param strict_indexing? boolean Whether out-of-bounds should be an error.
+---@return string[]
+function Buffer:get_lines(start, end_, strict_indexing)
+   return api.nvim_buf_get_lines(self.id, start, end_, strict_indexing or false)
 end
 
 ---@param start integer First line index

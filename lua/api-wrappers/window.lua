@@ -111,4 +111,10 @@ function Window:set_config(config)
    api.nvim_win_set_config(self.id, config)
 end
 
+---Set highlight namespace for a window.
+---@param ns_id integer
+function Window:set_highlight_namespace(ns_id)
+   api.nvim_win_set_hl_ns(self.id, ns_id)
+end
+
 return Window

@@ -3,28 +3,27 @@ local format = string.format
 local M = {}
 
 ---@class nvim.api.Highlight
----@field fg? integer
----@field bg? integer
----@field sp? integer The color of various underlines.
+---@field default boolean Don't override existing definition
+---@field fg? string #foreground
+---@field bg? string #background
+---@field sp? string #special --- The color of various underlines.
 ---@field blend? integer Between 0 and 100.  Override the blend level for a highlight group within the popupmenu or floating windows. 'pumblend' or 'winblend' must be set to take effect
 ---@field bold? boolean
 ---@field italic? boolean
+---@field strikethrough? boolean
+---@field reverse? boolean
 ---@field standout? boolean
 ---@field underline? boolean
 ---@field undercurl? boolean
 ---@field underdouble? boolean
 ---@field underdotted? boolean
 ---@field underdashed? boolean
----@field strikethrough? boolean
----@field reverse? boolean
 ---@field nocombine? boolean
 
----@param color integer 24-bit RGB Neovim internal value.
+---@param color integer #24-bit RGB Neovim internal value.
 ---@return string #Color in "#rrggbb" hexadecimal format.
-function M.color_to_hex(color)
-   vim.validate({
-      val = { color, 'number' }
-   })
+function M.rgb_to_hex(color)
+   vim.validate({ val = { color, 'number' } })
    return format('#%06x', color)
 end
 
@@ -39,15 +38,16 @@ end
 ---@param name string
 ---@return nvim.api.Highlight
 function M.get_highlight(name)
-   ---@type boolean
-   local rgb = api.nvim_get_option('termguicolors')
-   local hl = api.nvim_get_hl_by_name(name, rgb)
+   local hl = api.nvim_get_hl_by_name(name, vim.o.termguicolors)
    hl.fg = hl.foreground
    hl.bg = hl.background
    hl.sp = hl.special
+
    hl.foreground = nil
    hl.background = nil
    hl.special = nil
+
+   ---@cast hl nvim.api.Highlight
    return hl
 end
 
